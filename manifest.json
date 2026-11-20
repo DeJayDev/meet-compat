@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Meet Compatibility for Firefox",
+  "version": "1.0.1",
+  "description": "A compatibility fix that makes Google Meet see Firefox as Chrome, so Meet features limited to Chrome users work in Firefox.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "meet-room-checkin@dejaydev",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "permissions": ["webRequest", "webRequestBlocking"],
+  "host_permissions": ["*://meet.google.com/*", "*://*.clients6.google.com/*"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["raw-microphone.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
