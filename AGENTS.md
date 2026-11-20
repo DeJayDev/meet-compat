@@ -6,7 +6,8 @@ Guidance for coding agents working in this repository.
 
 - `npx web-ext run`: Firefox with a fresh profile and the extension loaded
 - `npx web-ext lint`: run after every change
-- `npx web-ext build --overwrite-dest`: zip in `web-ext-artifacts/` for the AMO Developer Hub (distribution "On your own", source code "No")
+- `npx web-ext build --overwrite-dest`: zip in `web-ext-artifacts/` for the AMO Developer Hub (source code "No")
+- `rsvg-convert -w 128 -h 128 icons/icon.svg -o icons/icon-128.png`: regenerate an icon PNG after editing `icons/icon.svg` (same for 48 and 96)
 
 There is no build step and no test suite. A release needs a new `version` in `manifest.json`, since AMO won't sign a version twice. Keep `strict_min_version` at 142 or later: `data_collection_permissions` arrived in Firefox 140 (Android 142), and AMO warns on anything lower. Keep the add-on ID `meet-room-checkin@dejaydev`; it predates the rename, and a new ID makes AMO treat the upload as a different add-on.
 
